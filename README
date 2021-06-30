@@ -1,0 +1,32 @@
+============  COMPILE server.c  ============
+gcc server.c -o server -lssl -lcrypto -lpthread
+
+
+============  COMPILE client.c  ============
+gcc client.c -o client -lssl -lcrypto -lpthread
+
+
+============  EXECUTE server  ============
+./server 8080
+
+
+============  EXECUTE client1  ============
+./client 127.0.0.1 8080 private1.pem public2.pem
+
+
+============  EXECUTE client2  ============
+./client 127.0.0.1 8080 private2.pem public1.pem
+
+
+============  TERMINATION  ==============
+Type exit on client's terminal
+
+
+
+NOTE: 
+
+=== GENERATE RSA PRIVATE KEY USING OPENSSL ===
+openssl genrsa -out private.pem 8192
+
+=== GENERATE RSA PUBLIC KEY USING OPENSSL ===
+openssl rsa -in private.pem -pubout -out public.pem
